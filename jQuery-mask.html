@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <style>
+    .box{
+        width: 200px;
+        height: 300px;background-color: red;
+        float: left;
+        margin: 100px;
+    }
+    </style>
 </head>
 <body>
-    <div class="box"></div>
-    <div class="box"></div>
+    <div class="box" id=yi></div>
+    <div class="box" id=er></div>
     
 </body>
 <script src="./kits2.0.js"></script>
@@ -16,6 +25,10 @@
 let box=$('.box')
 console.dir(box)
 console.log(box)
+let gao=$('#yi').css('height')
+console.log(gao)
+
+
 </script>
 
 </html>

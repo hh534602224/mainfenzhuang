@@ -6,10 +6,10 @@ window.$=window.jQuery=jQuery;
 function jQuery(selector){
    /*  本来直接写选择器返回的结果，但是我们的库的方法要封装在对象里面，
     函数功能都放在原型里面调用，所以我们直接返回：调用实例对象的方法 */
-    return new jQueryInit(selector);
+    return new Init(selector);
 }
 // 对象的 构造函数：
-function jQueryInit(selector){
+function Init(selector){
     // 通过原生的js获取的dow是一个NodeList的伪数组现在啊哟转化为我自己的伪数组
     let dow=document.querySelectorAll(selector);
     // 不管你通过选择器获取的是一位还是多位元素，甚至没有元素，我也要创建一个伪数组
@@ -21,6 +21,33 @@ function jQueryInit(selector){
 }
 
 // 封装方法在原型里面
+
+// 封装函数遍历
+// Array,foreach((e,i)=>{
+//     console.log(e)
+// })
+Init.prototype.foreach=function(eachnumber){
+    for(let i=0;i<eachnumber.length;i++){
+        eachnumber(i,this[i])
+    }
+}
+
+
+
+// 函数的css样式设置和获取
+
+Init.prototype.css=function(property,value){
+    // 如果只有一位数输入，那么就是获取属性的值，value就是undefined
+    if(value==undefined){
+         return window.getComputedStyle(this[0]) [property]
+         
+    }
+
+
+
+}
+
+
 
 
 
