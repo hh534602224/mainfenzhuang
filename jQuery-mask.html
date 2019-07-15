@@ -14,10 +14,14 @@
         margin: 100px;
         
     }
+    .a{
+        background-color:green;
+
+    }
     </style>
 </head>
 <body>
-    <div class="box" id=yi></div>
+    <div class="box a" id=yi></div>
     <div class="box" id=er></div>
     
 </body>
@@ -26,9 +30,10 @@
 let box=$('.box')
 console.dir(box)
 console.log(box)
-let gao=$('#yi').css('height')
+let gao=$('#yi').css('height','100px')
 console.log(gao)
 
+$('#yi').removeClass('a')
 
 </script>
 
