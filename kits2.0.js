@@ -33,21 +33,39 @@ Init.prototype.foreach=function(eachnumber){
 }
 
 
-
 // 函数的css样式设置和获取
 
 Init.prototype.css=function(property,value){
     // 如果只有一位数输入，那么就是获取属性的值，value就是undefined
     if(value==undefined){
-         return window.getComputedStyle(this[0]) [property]
-         
+         return window.getComputedStyle(this[0]) [property]      
+    }else{
+        // 定义一个需要带px单位的属性名
+        let pxarr=['width','height','top','left','margin','padding']
+        // 把给到需要改样式的数组都遍历一遍，设置他的css样式，只有一个也没关系
+        for(let i=0;i<this.length;i++){
+        /* 判断给到的数据是否有在数组pxarr中,如果是-1就是没有找到，有这个
+        在数组能找到的话就返回这个元素在数组中的索引，在这里就是用来判断是否存在
+        的判断 */
+        if (pxarr.indexOf(property)!==-1){
+            // 需要带单位
+            // 带单位还要判断本身输入要设置的值是否自带px单位
+        if(value.toString().indexOf('px')===-1){
+            // 输入是纯数字,没有px
+            this[i].style[property]=value+'px'
+        }else{
+            // 输入还有单位
+            this[i].style[property]=value;
+        }  
+        }else{
+            // 不需要带单位
+            this[i].style[property]=value;
+        }
     }
-
-
-
+    // 实现链式编程
+    return this;
 }
-
-
+}
 
 
 
